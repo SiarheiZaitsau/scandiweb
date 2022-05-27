@@ -6,9 +6,7 @@ import WidthContainer from "../WidthContainer";
 import Flex from "../Flex.js";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import { ReactComponent as Basket } from "../../images/basket.svg";
-import { getCategories } from "../../redux/selectors/index";
-import { connect } from "react-redux";
+import BasketInfo from "./BasketInfo";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -56,7 +54,7 @@ class Header extends React.Component {
             <Flex margin="0 22px 0 0" align="center">
               <CurrencySelect margin="0 10px 0 0">$</CurrencySelect>
             </Flex>
-            <Basket />
+            <BasketInfo />
           </Flex>
         </StyledHeader>
       </WidthContainer>
