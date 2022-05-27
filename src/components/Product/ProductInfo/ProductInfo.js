@@ -8,7 +8,7 @@ import ProductButton from "./ProductButton";
 import ProductDescription from "./ProductDescription";
 import ErrorText from "./ErrorText";
 import { connect } from "react-redux";
-import { addProduct } from "../../../redux/reducers/basketReducer/basketReducer";
+import { addProduct } from "../../../redux/slices/basketSlice/basketSlice";
 import styled from "styled-components";
 
 const StyledProductForm = styled.form``;

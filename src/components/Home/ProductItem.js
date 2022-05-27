@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
@@ -6,6 +7,8 @@ import ProductStatus from "./ProductStatus";
 import ProductToBasket from "./ProductToBasket";
 import { NavLink } from "react-router-dom";
 import Flex from "../Flex";
+import { addProduct } from "../../redux/slices/basketSlice/basketSlice";
+import { autoCompleteProduct } from "../../helpers/autoCompleteProduct";
 
 const StyledProductItem = styled.li`
   margin-right: 40px;
@@ -44,7 +47,11 @@ export const StyledNavLink = styled(NavLink)`
   display: block;
 `;
 
-export default class ProductItem extends Component {
+class ProductItem extends Component {
+  forceProductToBasket = (e) => {
+    e.preventDefault();
+    this.props.productToBasket(autoCompleteProduct(this.props.product));
+  };
   render() {
     const { product } = this.props;
     return (
@@ -53,7 +60,9 @@ export default class ProductItem extends Component {
           <Flex direction="column" position="relative">
             <StyledProductImg src={product.gallery[0]} />
             {!product.inStock && <ProductStatus text="OUT OF STOCK" />}
-            {product.inStock && <ProductToBasket />}
+            {product.inStock && (
+              <ProductToBasket toBasket={this.forceProductToBasket} />
+            )}
           </Flex>
           <ProductName text={product.name} />
           <ProductPrice prices={product.prices} />
@@ -62,3 +71,11 @@ export default class ProductItem extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    productToBasket: (product) => {
+      dispatch(addProduct(product));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(ProductItem);

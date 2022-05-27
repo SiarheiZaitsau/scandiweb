@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { Component } from "react";
 import { ReactComponent as DropdownIcon } from "../../../images/dropdown.svg";
 import { connect } from "react-redux";
-import { changeCurrency } from "../../../redux/reducers/currencyReducer/currencyReducer";
+import { changeCurrency } from "../../../redux/slices/currencySlice/currencySlice";
 import { fetchCurrencies } from "../../../helpers/requests";
 const Main = styled("div")`
   margin: ${({ margin }) => margin || "0"};

@@ -1,6 +1,6 @@
 import React from "react";
 import withRouter from "../HOCs/withRouter";
-import HomeContent from "../components/Home/Home";
+import ProductsContent from "../components/Home/Home";
 import { fetchCategoryData } from "../helpers/requests";
 class Products extends React.Component {
   constructor(props) {
@@ -25,7 +25,10 @@ class Products extends React.Component {
   render() {
     const { category } = this.props.match.params;
     return (
-      <HomeContent category={category} data={this.state.data}></HomeContent>
+      <ProductsContent
+        category={category}
+        data={this.state.data}
+      ></ProductsContent>
     );
   }
 }

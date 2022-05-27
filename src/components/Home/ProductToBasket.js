@@ -23,12 +23,7 @@ const StyledProductToBasket = styled.button`
 export default class ProductToBasket extends Component {
   render() {
     return (
-      <StyledProductToBasket
-        onClick={(e) => {
-          console.log("1");
-          e.preventDefault();
-        }}
-      >
+      <StyledProductToBasket onClick={(e) => this.props.toBasket(e)}>
         <BasketIcon fill="#fff" />
       </StyledProductToBasket>
     );

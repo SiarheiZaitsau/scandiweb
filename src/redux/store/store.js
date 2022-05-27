@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import basketSlice from "../reducers/basketReducer/basketReducer";
-import currencySlice from "../reducers/currencyReducer/currencyReducer";
+import basketSlice from "../slices/basketSlice/basketSlice";
+import currencySlice from "../slices/currencySlice/currencySlice";
 
 // const rootReducer = combineReducers({
 //   currency: currencyReducer,

@@ -1,10 +1,6 @@
 import React from "react";
 import withRouter from "../HOCs/withRouter";
-import { connect } from "react-redux";
 import ProductContent from "../components/Product/Product";
-import { selectData, getProductById } from "../redux/selectors/index";
-import getQuery from "../HOCs/getQuery";
-import { GET_PRODUCT } from "../query/product";
 import { fetchProductData } from "../helpers/requests";
 import Loader from "../components/Loader/Loader";
 class Product extends React.Component {

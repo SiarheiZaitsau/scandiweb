@@ -1,30 +1,3 @@
-// const initialState = [];
-// const basketReducer = (state = initialState, { type, payload }) => {
-//   switch (type) {
-//     case "PRODUCT_TO_BASKET":
-//       const isProductExist = state.some(
-//         (el) =>
-//           el.stringifiedAttributes === payload.stringifiedAttributes &&
-//           el.productId === payload.productId
-//       );
-//       let newState = [...state];
-//       if (isProductExist) {
-//         newState = state.map((item) => {
-//           if (item.id === payload.id) {
-//             item.amount += 1;
-//           }
-//           return item;
-//         });
-//       } else {
-//         newState.push({ ...payload, amount: 1 });
-//       }
-//       return newState;
-//     default:
-//       return state;
-//   }
-// };
-
-// export default basketReducer;
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
