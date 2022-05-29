@@ -10,16 +10,25 @@ const StyledNavItem = styled.li`
   line-height: 19px;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  position: relative;
   & .active {
-    font-weight: 600;
+    transition: all 0.3s ease;
     color: ${(props) => props.theme.colors.primary};
-    box-shadow: ${(props) => `0 2px 0 0 ${props.theme.colors.primary}`};
+  }
+  & .active:before {
+    content "";
+    left: 0;
+    bottom: -32px;
+    position: absolute;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-bottom: ${(props) => `2px solid ${props.theme.colors.primary}`};
   }
 `;
 export const Tab = styled(NavLink)`
   height: 100%;
   width: 100%;
-  padding: 16px;
+  padding: 0 16px;
   transition: all 0.3s ease;
   &:hover {
     color: #5ece7b;

@@ -7,11 +7,12 @@ import Flex from "../Flex.js";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import BasketInfo from "./BasketInfo";
+import { SIZES } from "../../helpers/styleVariables";
 
 const StyledHeader = styled.header`
   display: flex;
   width: 100%; // ??
-  height: 80px;
+  height: ${SIZES.headerHeight};
   justify-content: space-between;
   align-items: center;
   position: relative;
@@ -20,6 +21,7 @@ const StyledNavigation = styled.ul`
   display: flex;
   list-style: none;
   align-items: center;
+  height: 100%;
 `;
 export const StyledNavLink = styled(NavLink)`
   top: 50%;
@@ -35,7 +37,6 @@ class Header extends React.Component {
     super(props);
     this.state = {};
   }
-  async componentDidMount() {}
 
   render() {
     const { categories } = this.props;

@@ -20,15 +20,18 @@ const DropDownHeader = styled.div`
   align-items: center;
   cursor: pointer;
 `;
+const StyledOpenButton = styled.button`
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28.8px;
+`;
 const DropDownActiveButton = styled.button.attrs((props) => ({
   value: props.value,
 }))`
   font-size: 18px;
   font-weight: 500;
   line-height: 28.8px;
-  border: 0;
-  box-shadow: none;
-  background: transparent;
+  width: 100%;
   cursor: pointer;
   padding: ${(props) => !props.isActive && "20px"};
 `;
@@ -36,7 +39,7 @@ const DropDownActiveButton = styled.button.attrs((props) => ({
 const DropDownListContainer = styled.div`
   position: absolute;
   z-index: 10;
-  top: calc(100% + 5px);
+  top: calc(100% + 15px);
 `;
 
 const DropDownList = styled.ul`
@@ -94,9 +97,9 @@ class CurrentSelect extends Component {
       <Main>
         <DropDownContainer>
           <DropDownHeader onClick={() => this.toggling()}>
-            <DropDownActiveButton isActive={true}>
+            <StyledOpenButton isActive={true}>
               {this.state.selectedOption || "$"}
-            </DropDownActiveButton>
+            </StyledOpenButton>
             <DropdownIcon
               style={{
                 transition: "all .3s ease",

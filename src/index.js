@@ -20,7 +20,13 @@ const Global = createGlobalStyle`
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
   color: #1D1F22;
-}`;
+}
+button {
+  border:0;
+  box-shadow:none;
+  background: transparent;
+}
+`;
 
 const theme = {
   colors: {
