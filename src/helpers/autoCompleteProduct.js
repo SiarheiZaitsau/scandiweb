@@ -1,7 +1,6 @@
 export const autoCompleteProduct = (product) => {
   const id = product.id;
   const attributes = product.attributes;
-
   if (attributes.length < 1) {
     return {
       productId: id,
@@ -16,5 +15,6 @@ export const autoCompleteProduct = (product) => {
     ...autocompleted,
     productId: id,
     stringifiedAttributes: JSON.stringify(autocompleted),
+    productInfo: product,
   };
 };

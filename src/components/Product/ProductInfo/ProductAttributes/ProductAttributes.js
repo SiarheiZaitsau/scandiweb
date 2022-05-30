@@ -3,18 +3,21 @@ import styled from "styled-components";
 import ProductAttribute from "./ProductAttribute";
 
 const StyledProductAttributes = styled.ul`
+  margin-bottom: ${(props) => (props.type === "small" ? "0" : "36px")};
   list-style: none;
-  margin-bottom: 36px;
 `;
 
 class ProductAttributes extends Component {
   render() {
+    const { handleChangeValue, type, data, selectedInfo } = this.props;
     return (
-      <StyledProductAttributes>
-        {this.props?.data?.map((attribute) => {
+      <StyledProductAttributes type={type}>
+        {data.map((attribute) => {
           return (
             <ProductAttribute
-              handleChangeValue={this.props.handleChangeValue}
+              selectedInfo={selectedInfo}
+              type={type}
+              handleChangeValue={handleChangeValue}
               key={attribute.name}
               attribute={attribute}
             />

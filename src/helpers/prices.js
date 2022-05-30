@@ -3,7 +3,10 @@ export const getPrice = (prices, currency) => {
     let result = prices.find((item) => {
       return item.currency.label === currency;
     });
-    return `${result.currency.symbol}${result.amount}`;
+    return {
+      symbol: result.currency.symbol,
+      price: result.amount,
+    };
   } else {
     return `No such Price`;
   }

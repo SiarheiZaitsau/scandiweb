@@ -6,7 +6,7 @@ import WidthContainer from "../WidthContainer";
 import Flex from "../Flex.js";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import BasketInfo from "./BasketInfo";
+import BasketInfo from "./HeaderBasket/BasketInfo";
 import { SIZES } from "../../helpers/styleVariables";
 
 const StyledHeader = styled.header`

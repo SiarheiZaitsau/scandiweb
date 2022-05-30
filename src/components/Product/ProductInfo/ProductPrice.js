@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getPrice } from "../../../helpers/prices";
 import { connect } from "react-redux";
 import { getCurrency } from "../../../redux/selectors/index";
+
 const StyledProductPriceTitle = styled.h6`
   font-family: "Roboto Condensed";
   font-style: normal;
@@ -20,12 +21,11 @@ const StyledProductPrice = styled.p`
 `;
 class ProductPrice extends Component {
   render() {
+    const { symbol, price } = getPrice(this.props.prices, this.props.currency);
     return (
       <>
         <StyledProductPriceTitle>Price:</StyledProductPriceTitle>
-        <StyledProductPrice>
-          {getPrice(this.props.prices, this.props.currency)}
-        </StyledProductPrice>
+        <StyledProductPrice>{`${symbol}${price}`}</StyledProductPrice>
       </>
     );
   }

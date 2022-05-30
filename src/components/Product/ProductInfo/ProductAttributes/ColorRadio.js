@@ -6,11 +6,13 @@ const StyledLabel = styled.label.attrs((props) => ({
 }))`
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: center;
-  height: 31px;
+  height: ${(props) => (props.styleType === "small" ? "14px" : "31px")};
+  width: ${(props) => (props.styleType === "small" ? "14px" : "31px")};
+  margin-left: ${(props) => (props.styleType === "small" ? "2px" : "0")};
   border: ${({ color }) =>
     color === "#FFFFFF" ? "1px solid #1d1f22" : "none"};
-  width: 31px;
   background: ${({ color }) => color || "transparent"};
   cursor: pointer;
 `;
@@ -26,8 +28,8 @@ const StyledInput = styled.input.attrs((props) => ({
   &:checked + ${StyledLabel}::before {
     content: "";
     position: absolute;
-    width: 33px;
-    height: 33px;
+    width: ${(props) => (props.styleType === "small" ? "16px" : "33px")};
+    height: ${(props) => (props.styleType === "small" ? "16px" : "33px")};
     background: transparent;
     border: ${(props) => `1px solid ${props.theme.colors.primary}`};
   }
@@ -41,16 +43,18 @@ const StyledContainer = styled.div`
 
 export default class DefaultRadio extends Component {
   render() {
+    const { onChange, value, name, type, color, id } = this.props;
     return (
       <StyledContainer>
         <StyledInput
+          styleType={type}
           type="radio"
-          onChange={this.props.onChange}
-          value={this.props.value}
-          name={this.props.name}
-          id={this.props.value}
+          onChange={onChange}
+          value={value}
+          name={name}
+          id={id}
         />
-        <StyledLabel color={this.props.color} htmlFor={this.props.value} />
+        <StyledLabel styleType={type} color={color} htmlFor={id} />
       </StyledContainer>
     );
   }

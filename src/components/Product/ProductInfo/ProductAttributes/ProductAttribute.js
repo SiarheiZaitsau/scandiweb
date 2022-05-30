@@ -6,7 +6,7 @@ import DefaultRadio from "./DefaultRadio";
 import ColorRadio from "./ColorRadio";
 
 const StyledProductAttribute = styled.li`
-  margin-bottom: 24px;
+  margin-bottom: ${(props) => (props.type === "small" ? "8px" : "24px")};
   &:last-of-type {
     margin-bottom: 0;
   }
@@ -14,23 +14,21 @@ const StyledProductAttribute = styled.li`
 
 class ProductAttribute extends Component {
   render() {
-    if (this.props?.attribute.name === "Color") {
+    const { attribute, type, handleChangeValue, selectedInfo } = this.props;
+    if (attribute.name === "Color") {
       return (
-        <StyledProductAttribute>
-          <ProductAttributeText text={this.props?.attribute?.name} />
+        <StyledProductAttribute type={type}>
+          <ProductAttributeText text={attribute.name} />
           <Flex>
-            {this.props?.attribute.items.map((item) => {
+            {attribute.items.map((item) => {
               return (
                 <ColorRadio
+                  id={selectedInfo ? selectedInfo + item.value : item.value}
+                  type={type}
                   key={item.value}
                   value={item.value}
-                  name={this.props?.attribute?.name}
-                  onChange={() =>
-                    this.props.handleChangeValue(
-                      this.props?.attribute?.name,
-                      item.value
-                    )
-                  }
+                  name={attribute.name}
+                  onChange={() => handleChangeValue(attribute.name, item.value)}
                   color={item.value}
                 />
               );
@@ -40,21 +38,26 @@ class ProductAttribute extends Component {
       );
     }
     return (
-      <StyledProductAttribute>
-        <ProductAttributeText text={this.props?.attribute?.name} />
+      <StyledProductAttribute type={type}>
+        <ProductAttributeText type={type} text={attribute.name} />
         <Flex>
-          {this.props?.attribute === "Color"}
-          {this.props?.attribute.items.map((item) => {
+          {attribute.items.map((item) => {
+            console.log(attribute.name, "attribute name");
             return (
               <DefaultRadio
+                id={
+                  selectedInfo
+                    ? selectedInfo + attribute.name + item.value
+                    : item.value + attribute.name
+                }
+                type={type}
                 key={item.value}
                 value={item.value}
-                name={this.props?.attribute?.name}
+                name={
+                  selectedInfo ? selectedInfo + attribute.name : attribute.name
+                }
                 onChange={() =>
-                  this.props.handleChangeValue(
-                    this.props?.attribute?.name,
-                    item.value
-                  )
+                  this.props.handleChangeValue(attribute.name, item.value)
                 }
               />
             );

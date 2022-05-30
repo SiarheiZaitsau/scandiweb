@@ -16,7 +16,6 @@ export default class Product extends Component {
   };
   render() {
     const { product } = this.props;
-
     return (
       <WidthContainer padding="80px 101px">
         <ImagesList changeMainImage={this.getImage} gallery={product.gallery} />

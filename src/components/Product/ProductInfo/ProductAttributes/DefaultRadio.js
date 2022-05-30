@@ -6,15 +6,16 @@ const StyledLabel = styled.label.attrs((props) => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 45px;
-  width: 63px;
+  min-height: ${(props) => (props.styleType === "small" ? "24px" : "45px")};
+  min-width: ${(props) => (props.styleType === "small" ? "24px" : "63px")};
   background: transparent;
   border: 1px solid #1d1f22;
   font-family: Source Sans Pro;
-  font-size: 16px;
+  font-size: ${(props) => (props.styleType === "small" ? "14px" : "16px")};
   font-weight: 400;
+  padding: 4px;
   cursor: pointer;
-  line-height: 18px;
+  line-height: ${(props) => (props.styleType === "small" ? "22.4px" : "18px")};
   letter-spacing: 0.05em;
 `;
 
@@ -32,7 +33,7 @@ const StyledInput = styled.input.attrs((props) => ({
   }
 `;
 const StyledContainer = styled.div`
-  margin-right: 12px;
+  margin-right: ${(props) => (props.styleType === "small" ? "8px" : "12px")};
   &:last-of-type {
     margin-right: 0;
   }
@@ -44,17 +45,19 @@ const StyledContainer = styled.div`
 
 export default class DefaultRadio extends Component {
   render() {
+    const { type, onChange, value, name, id } = this.props;
+    console.log(id, "id");
     return (
-      <StyledContainer>
+      <StyledContainer styleType={type}>
         <StyledInput
           type="radio"
-          onChange={this.props.onChange}
-          value={this.props.value}
-          name={this.props.name}
-          id={this.props.name + this.props.value}
+          onChange={onChange}
+          value={value}
+          name={name}
+          id={id}
         />
-        <StyledLabel htmlFor={this.props.name + this.props.value}>
-          {this.props.value}
+        <StyledLabel styleType={type} htmlFor={id}>
+          {value}
         </StyledLabel>
       </StyledContainer>
     );

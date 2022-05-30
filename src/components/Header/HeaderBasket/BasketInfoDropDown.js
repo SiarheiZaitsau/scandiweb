@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { SIZES } from "../../helpers/styleVariables";
+import { SIZES } from "../../../helpers/styleVariables";
+import BasketTitle from "./BasketTitle";
+import ProductsList from "./ProductsList";
 
 const StyledBasketInfoDropDown = styled.div`
   position: absolute;
@@ -9,9 +11,13 @@ const StyledBasketInfoDropDown = styled.div`
   background: #ffffff;
   padding: 32px 16px;
   top: calc(100% + 28px);
-
   width: 325px;
   height: 677px;
+`;
+const StyledBasketContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 const StyledOverlay = styled.div`
   position: fixed;
@@ -27,9 +33,15 @@ const StyledOverlay = styled.div`
 
 class BasketInfoDropDown extends Component {
   render() {
+    const { innerRef, basket } = this.props;
     return (
       <>
-        <StyledBasketInfoDropDown> </StyledBasketInfoDropDown>
+        <StyledBasketInfoDropDown ref={innerRef}>
+          <StyledBasketContainer>
+            <BasketTitle length={basket.length} />
+            <ProductsList basket={basket} />
+          </StyledBasketContainer>
+        </StyledBasketInfoDropDown>
         <StyledOverlay />
       </>
     );

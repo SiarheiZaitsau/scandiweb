@@ -17,7 +17,6 @@ class ProductInfo extends Component {
   submitForm = (e) => {
     e.preventDefault();
     const { selectedAttributes } = this.state;
-
     if (Object.values(selectedAttributes).includes(null)) {
       this.setState({ isError: true });
     } else {
@@ -27,6 +26,7 @@ class ProductInfo extends Component {
         ...selectedAttributes,
         productId,
         stringifiedAttributes,
+        productInfo: this.props.product,
       });
       this.setState({ isError: false });
     }
@@ -40,10 +40,9 @@ class ProductInfo extends Component {
   }
   componentDidMount() {
     let selectedAttributes = {};
-    this.props?.product?.attributes.forEach(
+    this.props.product.attributes.forEach(
       (attribute) => (selectedAttributes[attribute?.name] = null)
     );
-
     this.setState({ selectedAttributes });
   }
   handleChangeValue = (name, value) => {
@@ -65,7 +64,7 @@ class ProductInfo extends Component {
           <ProductAttributes
             handleChangeValue={this.handleChangeValue}
             id={product.id}
-            data={product?.attributes}
+            data={product.attributes}
           />
           {this.state.isError && <ErrorText />}
           <ProductPrice prices={product.prices} />

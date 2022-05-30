@@ -10,11 +10,8 @@ const StyledProductPrice = styled.p`
 `;
 class ProductPrice extends Component {
   render() {
-    return (
-      <StyledProductPrice>
-        {getPrice(this.props.prices, this.props.currency)}
-      </StyledProductPrice>
-    );
+    const { symbol, price } = getPrice(this.props.prices, this.props.currency);
+    return <StyledProductPrice>{`${symbol}${price}`}</StyledProductPrice>;
   }
 }
 const mapStateToProps = (state) => {
