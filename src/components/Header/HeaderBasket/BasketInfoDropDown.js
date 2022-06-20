@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { SIZES } from "../../../helpers/styleVariables";
 import BasketTitle from "./BasketTitle";
 import ProductsList from "./ProductsList";
+import BasketPrice from "./BasketPrice";
+import BasketButtons from "./BasketButtons";
 
 const StyledBasketInfoDropDown = styled.div`
   position: absolute;
@@ -12,7 +14,7 @@ const StyledBasketInfoDropDown = styled.div`
   padding: 32px 16px;
   top: calc(100% + 28px);
   width: 325px;
-  height: 677px;
+  max-height: 677px;
 `;
 const StyledBasketContainer = styled.div`
   display: flex;
@@ -33,7 +35,7 @@ const StyledOverlay = styled.div`
 
 class BasketInfoDropDown extends Component {
   render() {
-    const { innerRef, basket } = this.props;
+    const { innerRef, basket, closeBasket, price, symbol } = this.props;
     return (
       <>
         <StyledBasketInfoDropDown ref={innerRef}>
@@ -41,6 +43,8 @@ class BasketInfoDropDown extends Component {
             <BasketTitle length={basket.length} />
             <ProductsList basket={basket} />
           </StyledBasketContainer>
+          <BasketPrice price={price} symbol={symbol} />
+          <BasketButtons basket={basket} closeBasket={closeBasket} />
         </StyledBasketInfoDropDown>
         <StyledOverlay />
       </>

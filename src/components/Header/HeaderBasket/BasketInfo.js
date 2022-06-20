@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { getBasket } from "../../../redux/selectors/index";
+import { getBasket, getCurrency } from "../../../redux/selectors/index";
 import { ReactComponent as BasketIcon } from "../../../images/basket.svg";
 import BasketInfoDropDown from "./BasketInfoDropDown";
 
@@ -17,7 +17,7 @@ const StyledBasketButton = styled.button`
   cursor: pointer;
 `;
 const StyledBasketInfo = styled.div`
-  font-family: Roboto;
+  font-family: "Roboto";
   font-weight: 700;
   font-size: 14px;
   line-height: 16.41px;
@@ -40,6 +40,8 @@ class BasketInfo extends Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.state = {
       isOpen: false,
+      basketValue: null,
+      currencySymbol: "",
     };
   }
   handleClickOutside(e) {
@@ -52,34 +54,71 @@ class BasketInfo extends Component {
     this.setState({ isOpen: !this.state.isOpen });
     this.state.isOpen
       ? (document.body.style.overflow = "unset")
-      : (document.body.style.overflow = "hidden"); // ??
+      : (document.body.style.overflow = "hidden");
   };
   componentDidMount() {
     document.addEventListener("click", this.handleClickOutside, true);
+    this.calculateBasketValue(this.props.basket, this.props.currency);
   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps && this.props.basket.length < 1) {
+      this.setState({ isOpen: false });
+      document.body.style.overflow = "unset";
+    }
+    if (
+      this.props !== prevProps &&
+      (this.props.basket !== prevProps.basket ||
+        this.props.currency !== prevProps.currency)
+    ) {
+      this.calculateBasketValue(this.props.basket, this.props.currency);
+    }
+  }
   componentWillUnmount() {
     document.removeEventListener("click", this.handleClickOutside, true);
   }
 
+  calculateBasketValue = (basket, currency) => {
+    let symbol = "";
+    const res = basket.reduce((acc, current) => {
+      current.productInfo.prices.forEach((prices) => {
+        if (prices.currency.label === currency) {
+          acc += prices.amount * current.amount;
+          symbol = prices.currency.symbol;
+        }
+      });
+      return acc;
+    }, 0);
+    this.setState({ basketValue: res.toFixed(2), currencySymbol: symbol });
+  };
+
   render() {
     const { length } = this.props.basket;
+    const { basketValue, currencySymbol } = this.state;
     return (
       <StyledBasketInfoContainer>
-        <StyledBasketButton onClick={() => this.toggling()}>
+        <StyledBasketButton
+          disabled={length < 1}
+          onClick={() => this.toggling()}
+        >
           <BasketIcon
             style={{ fill: "#1D1F22", width: "20px", height: "20px" }}
           />
           {length > 0 && <StyledBasketInfo>{length}</StyledBasketInfo>}
         </StyledBasketButton>
         {this.state.isOpen && (
-          <BasketInfoDropDown basket={this.props.basket} innerRef={this.ref} />
+          <BasketInfoDropDown
+            closeBasket={this.toggling}
+            basket={this.props.basket}
+            innerRef={this.ref}
+            price={basketValue}
+            symbol={currencySymbol}
+          />
         )}
       </StyledBasketInfoContainer>
     );
   }
 }
 const mapStateToProps = (state) => {
-  return { basket: getBasket(state) };
+  return { basket: getBasket(state), currency: getCurrency(state) };
 };
 export default connect(mapStateToProps)(BasketInfo);

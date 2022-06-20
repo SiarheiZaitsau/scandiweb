@@ -4,8 +4,6 @@ const initialState = {
   basket: [],
 };
 
-// export const changeCurrency = createAction("CHANGE_CURRENCY");
-
 const basketSlice = createSlice({
   name: "currency",
   initialState,
@@ -30,8 +28,44 @@ const basketSlice = createSlice({
       }
       state.basket = newState;
     },
+    incrementAmount: (state, action) => {
+      const { payload } = action;
+      const product = state.basket.find(
+        (el) =>
+          el.stringifiedAttributes === payload.stringifiedAttributes &&
+          el.productId === payload.productId
+      );
+      product.amount++;
+    },
+    decrementAmount: (state, action) => {
+      const { payload } = action;
+      const product = state.basket.find(
+        (el) =>
+          el.stringifiedAttributes === payload.stringifiedAttributes &&
+          el.productId === payload.productId
+      );
+      if (product.amount === 1) {
+        state.basket = state.basket.filter((prod) => {
+          return !(
+            prod.stringifiedAttributes === product.stringifiedAttributes &&
+            prod.productId === product.productId
+          );
+        });
+      } else {
+        product.amount--;
+      }
+    },
+    clearBasket: (state) => {
+      state.basket = [];
+    },
   },
 });
 
-export const { addProduct } = basketSlice.actions;
+export const {
+  addProduct,
+  incrementAmount,
+  decrementAmount,
+  changeAttributeValue,
+  clearBasket,
+} = basketSlice.actions;
 export default basketSlice.reducer;

@@ -14,7 +14,15 @@ const StyledProductAttribute = styled.li`
 
 class ProductAttribute extends Component {
   render() {
-    const { attribute, type, handleChangeValue, selectedInfo } = this.props;
+    const {
+      attribute,
+      type,
+      handleChangeValue,
+      selectedInfo,
+      selectedValue,
+      productId,
+      disabled,
+    } = this.props;
     if (attribute.name === "Color") {
       return (
         <StyledProductAttribute type={type}>
@@ -28,8 +36,17 @@ class ProductAttribute extends Component {
                   key={item.value}
                   value={item.value}
                   name={attribute.name}
-                  onChange={() => handleChangeValue(attribute.name, item.value)}
+                  disabled={disabled}
+                  onChange={() =>
+                    handleChangeValue(
+                      attribute.name,
+                      item.value,
+                      selectedInfo,
+                      productId
+                    )
+                  }
                   color={item.value}
+                  selectedValue={selectedValue}
                 />
               );
             })}
@@ -42,7 +59,6 @@ class ProductAttribute extends Component {
         <ProductAttributeText type={type} text={attribute.name} />
         <Flex>
           {attribute.items.map((item) => {
-            console.log(attribute.name, "attribute name");
             return (
               <DefaultRadio
                 id={
@@ -57,8 +73,15 @@ class ProductAttribute extends Component {
                   selectedInfo ? selectedInfo + attribute.name : attribute.name
                 }
                 onChange={() =>
-                  this.props.handleChangeValue(attribute.name, item.value)
+                  this.props.handleChangeValue(
+                    attribute.name,
+                    item.value,
+                    selectedInfo,
+                    productId
+                  )
                 }
+                disabled={disabled}
+                selectedValue={selectedValue}
               />
             );
           })}

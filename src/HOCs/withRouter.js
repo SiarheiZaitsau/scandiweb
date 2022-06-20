@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function withRouter(Children) {
   return (props) => {
     const match = { params: useParams() };
-    return <Children {...props} match={match} />;
+    const navigate = useNavigate();
+    return <Children {...props} navigate={navigate} match={match} />;
   };
 }
 export default withRouter;

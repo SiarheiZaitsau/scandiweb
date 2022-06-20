@@ -25,6 +25,7 @@ const StyledInput = styled.input.attrs((props) => ({
   id: props.id,
   value: props.value,
   onChange: props.onChange,
+  disabled: props.disabled,
 }))`
   display: none;
   &:checked + ${StyledLabel} {
@@ -45,8 +46,8 @@ const StyledContainer = styled.div`
 
 export default class DefaultRadio extends Component {
   render() {
-    const { type, onChange, value, name, id } = this.props;
-    console.log(id, "id");
+    const { type, onChange, value, name, id, selectedValue, disabled } =
+      this.props;
     return (
       <StyledContainer styleType={type}>
         <StyledInput
@@ -55,6 +56,8 @@ export default class DefaultRadio extends Component {
           value={value}
           name={name}
           id={id}
+          defaultChecked={selectedValue ? value === selectedValue : null}
+          disabled={disabled}
         />
         <StyledLabel styleType={type} htmlFor={id}>
           {value}

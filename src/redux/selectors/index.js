@@ -27,6 +27,6 @@ export const selectCategory = (state, category) => category;
 // );
 
 export const getProductById = createSelector(
-  [(state) => state.data?.data, (state, id) => id],
+  [(state) => state.data.data, (state, id) => id],
   (data, id) => data.find((product) => product.id === id)
 );

@@ -5,6 +5,7 @@ export const autoCompleteProduct = (product) => {
     return {
       productId: id,
       stringifiedAttributes: JSON.stringify({}),
+      productInfo: product,
     };
   }
   const autocompleted = {};
