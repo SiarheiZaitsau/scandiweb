@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ReactComponent as PlusIcon } from "../../../images/Plus.svg";
 import { connect } from "react-redux";
 import {
   incrementAmount,
@@ -47,9 +46,6 @@ const StyledCounterValue = styled.p.attrs((props) => ({
 `;
 
 class BasketProductCounter extends Component {
-  constructor(props) {
-    super(props);
-  }
   incrementProduct = (product) => {
     this.props.increment(product);
   };

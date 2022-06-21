@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Flex from "../../Flex";
+
 const StyledPriceText = styled.p`
   font-family: "Roboto";
   font-size: 16px;

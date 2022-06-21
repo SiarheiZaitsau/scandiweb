@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
-import ProductAttributes from "../../Product/ProductInfo/ProductAttributes/ProductAttributes";
+import ProductAttributes from "../../../elements/ProductAttributes/ProductAttributes";
 import Flex from "../../Flex";
 import BasketProductCounter from "./BasketProductCounter";
 import ProductImage from "./ProductImage";

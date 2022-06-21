@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProductBrand from "./ProductBrand";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
-import ProductAttributes from "../Product/ProductInfo/ProductAttributes/ProductAttributes";
+import ProductAttributes from "../../elements/ProductAttributes/ProductAttributes";
 import Counter from "../Header/HeaderBasket/BasketProductCounter";
 import Flex from "../Flex";
 import ProductImagesSlider from "./ProductImagesSlider";
