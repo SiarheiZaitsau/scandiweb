@@ -54,7 +54,7 @@ class BasketProductCounter extends Component {
   };
   render() {
     const { amount, product, buttonsType, isBasket } = this.props;
-    console.log(isBasket, "isBasket");
+
     return (
       <StyledCounterContainer isBasket={isBasket}>
         <StyledCounterButton

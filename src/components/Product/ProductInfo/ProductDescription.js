@@ -8,6 +8,10 @@ const StyledProductName = styled.p`
   line-height: 26px;
   h1 {
     line-height: 40px;
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 24px;
   }
 `;
 

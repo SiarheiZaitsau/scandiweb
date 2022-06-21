@@ -64,7 +64,7 @@ class ProductItem extends Component {
               <ProductToBasket toBasket={this.forceProductToBasket} />
             )}
           </Flex>
-          <ProductName text={product.name} />
+          <ProductName text={`${product.brand} ${product.name}`} />
           <ProductPrice prices={product.prices} />
         </StyledNavLink>
       </StyledProductItem>

@@ -15,6 +15,7 @@ const StyledProductSliderMainImage = styled.img.attrs((props) => ({
   width: 200px;
   margin-left: 24px;
 `;
+
 class ProductImagesSlider extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,6 @@ class ProductImagesSlider extends Component {
   changeImage = (type) => {
     const { currentImgIndex } = this.state;
     const { images } = this.props;
-    console.log(this.state.currentImgIndex, "indexInside");
     if (type === "next") {
       if (currentImgIndex === images.length - 1) {
         this.setState({
@@ -55,9 +55,8 @@ class ProductImagesSlider extends Component {
     }
   };
   render() {
-    console.log(this.state.currentImgIndex, "index");
     const { activeImage } = this.state;
-    console.log(activeImage, "images");
+
     return (
       <Flex position="relative">
         <StyledProductSliderMainImage src={activeImage} />

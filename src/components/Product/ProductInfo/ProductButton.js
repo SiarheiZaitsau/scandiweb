@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledProductButton = styled.button`
   background: ${(props) => `${props.theme.colors.primary}`};
-  font-family: Raleway;
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;

@@ -29,13 +29,13 @@ const StyledButton = styled.button`
 
 class BasketButtons extends Component {
   render() {
-    const { closeBasket, basket } = this.props;
+    const { closeBasket, makeOrder } = this.props;
     return (
       <Flex align="center">
         <NavLink to="/basket">
           <StyledButton onClick={closeBasket}>View bag</StyledButton>
         </NavLink>
-        <StyledButton onClick={console.log(basket)} type="secondary">
+        <StyledButton onClick={() => makeOrder()} type="secondary">
           CHECK OUT
         </StyledButton>
       </Flex>

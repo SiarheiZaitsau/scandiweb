@@ -5,6 +5,9 @@ import BasketTitle from "./BasketTitle";
 import ProductsList from "./ProductsList";
 import BasketPrice from "./BasketPrice";
 import BasketButtons from "./BasketButtons";
+import withRouter from "../../../HOCs/withRouter";
+import { clearBasket } from "../../../redux/slices/basketSlice/basketSlice";
+import { connect } from "react-redux";
 
 const StyledBasketInfoDropDown = styled.div`
   position: absolute;
@@ -34,6 +37,11 @@ const StyledOverlay = styled.div`
 `;
 
 class BasketInfoDropDown extends Component {
+  makeOrder = () => {
+    this.props.clearBasket();
+    this.props.navigate("/");
+    console.log(this.props.basket);
+  };
   render() {
     const { innerRef, basket, closeBasket, price, symbol } = this.props;
     return (
@@ -44,7 +52,11 @@ class BasketInfoDropDown extends Component {
             <ProductsList basket={basket} />
           </StyledBasketContainer>
           <BasketPrice price={price} symbol={symbol} />
-          <BasketButtons basket={basket} closeBasket={closeBasket} />
+          <BasketButtons
+            makeOrder={this.makeOrder}
+            basket={basket}
+            closeBasket={closeBasket}
+          />
         </StyledBasketInfoDropDown>
         <StyledOverlay />
       </>
@@ -52,4 +64,13 @@ class BasketInfoDropDown extends Component {
   }
 }
 
-export default BasketInfoDropDown;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearBasket: () => {
+      dispatch(clearBasket());
+    },
+  };
+};
+export default withRouter(
+  connect(null, mapDispatchToProps)(BasketInfoDropDown)
+);

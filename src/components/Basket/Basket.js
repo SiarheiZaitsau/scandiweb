@@ -18,7 +18,6 @@ class Basket extends Component {
     };
   }
   makeOrder = () => {
-    console.log(this.props.basket);
     this.props.clearBasket();
     this.props.navigate("/");
   };
