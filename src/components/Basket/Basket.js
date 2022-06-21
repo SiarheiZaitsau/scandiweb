@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import WidthContainer from "../WidthContainer";
+import WidthContainer from "../../elements/WidthContainer";
 import PageTitle from "./PageTitle";
 import ProductList from "./ProductList";
 import BasketAttribute from "./BasketAttribute";

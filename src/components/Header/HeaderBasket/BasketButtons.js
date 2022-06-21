@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Flex from "../../Flex";
+import Flex from "../../../elements/Flex";
 import { NavLink } from "react-router-dom";
 
 const StyledButton = styled.button`

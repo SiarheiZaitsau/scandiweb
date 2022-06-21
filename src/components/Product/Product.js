@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ImagesList from "./ImagesList";
-import WidthContainer from "../WidthContainer";
+import WidthContainer from "../../elements/WidthContainer";
 import MainImage from "./MainImage";
 import ProductInfo from "./ProductInfo/ProductInfo";
 

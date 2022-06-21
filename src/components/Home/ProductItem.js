@@ -6,7 +6,7 @@ import ProductPrice from "./ProductPrice";
 import ProductStatus from "./ProductStatus";
 import ProductToBasket from "./ProductToBasket";
 import { NavLink } from "react-router-dom";
-import Flex from "../Flex";
+import Flex from "../../elements/Flex";
 import { addProduct } from "../../redux/slices/basketSlice/basketSlice";
 import { autoCompleteProduct } from "../../helpers/autoCompleteProduct";
 

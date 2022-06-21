@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ImagesSliderButtons from "./ImagesSliderButtons";
 import styled from "styled-components";
-import Flex from "../Flex";
+import Flex from "../../elements/Flex";
 
 const StyledProductSliderMainImage = styled.img.attrs((props) => ({
   src: props.src,

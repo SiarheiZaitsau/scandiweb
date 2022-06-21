@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Flex from "../Flex";
+import Flex from "../../elements/Flex";
 const StyledText = styled.p`
   font-size: 24px;
   font-weight: ${(props) => (props.type === "price" ? 500 : 400)};

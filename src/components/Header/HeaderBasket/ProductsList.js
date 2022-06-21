@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
 import ProductAttributes from "../../../elements/ProductAttributes/ProductAttributes";
-import Flex from "../../Flex";
+import Flex from "../../../elements/Flex";
 import BasketProductCounter from "./BasketProductCounter";
 import ProductImage from "./ProductImage";
 import { connect } from "react-redux";

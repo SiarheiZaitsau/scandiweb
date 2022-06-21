@@ -5,7 +5,7 @@ import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
 import ProductAttributes from "../../elements/ProductAttributes/ProductAttributes";
 import Counter from "../Header/HeaderBasket/BasketProductCounter";
-import Flex from "../Flex";
+import Flex from "../../elements/Flex";
 import ProductImagesSlider from "./ProductImagesSlider";
 
 const StyledProductsListItem = styled.li`

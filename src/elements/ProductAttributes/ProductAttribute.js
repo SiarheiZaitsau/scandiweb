@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ProductAttributeText from "./ProductAttributeText";
-import Flex from "../../components/Flex";
+import Flex from "../Flex";
 import DefaultRadio from "./DefaultRadio";
 import ColorRadio from "./ColorRadio";
 

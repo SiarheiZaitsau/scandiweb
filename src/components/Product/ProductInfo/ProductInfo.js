@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Flex from "../../Flex";
+import Flex from "../../../elements/Flex";
 import ProductAttributes from "../../../elements/ProductAttributes/ProductAttributes";
 import ProductBrand from "./ProductBrand";
 import ProductName from "./ProductName";
