@@ -26,7 +26,7 @@ class Basket extends Component {
     if (this.props.basket.length < 1) {
       this.props.navigate("/");
     }
-    this.calculateBasketValue(this.props.basket, this.props.currency);
+    this.calculateBasketValue(this.props.basket, this.props.currency.name);
   }
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps && this.props.basket.length < 1) {
@@ -37,7 +37,7 @@ class Basket extends Component {
       (this.props.basket !== prevProps.basket ||
         this.props.currency !== prevProps.currency)
     ) {
-      this.calculateBasketValue(this.props.basket, this.props.currency);
+      this.calculateBasketValue(this.props.basket, this.props.currency.name);
     }
   }
   calculateBasketValue = (basket, currency) => {
@@ -89,4 +89,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Basket));

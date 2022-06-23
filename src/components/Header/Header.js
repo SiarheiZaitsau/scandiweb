@@ -11,7 +11,7 @@ import { SIZES } from "../../helpers/styleVariables";
 
 const StyledHeader = styled.header`
   display: flex;
-  width: 100%; // ??
+  width: 100%;
   height: ${SIZES.headerHeight};
   justify-content: space-between;
   align-items: center;

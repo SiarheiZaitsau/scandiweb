@@ -11,7 +11,10 @@ const StyledProductPrice = styled.p`
 
 class ProductPrice extends Component {
   render() {
-    const { symbol, price } = getPrice(this.props.prices, this.props.currency);
+    const { symbol, price } = getPrice(
+      this.props.prices,
+      this.props.currency.name
+    );
     return <StyledProductPrice>{`${symbol}${price}`}</StyledProductPrice>;
   }
 }

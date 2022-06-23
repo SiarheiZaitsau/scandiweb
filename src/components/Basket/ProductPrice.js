@@ -13,7 +13,7 @@ const StyledProductPrice = styled.p`
 class ProductPrice extends Component {
   render() {
     const { prices, currency, amount } = this.props;
-    const { symbol, price } = getPrice(prices, currency);
+    const { symbol, price } = getPrice(prices, currency.name);
     return (
       <StyledProductPrice>{`${symbol}${(price * amount).toFixed(
         2

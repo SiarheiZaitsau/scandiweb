@@ -81,7 +81,7 @@ class BasketInfo extends Component {
     let symbol = "";
     const res = basket.reduce((acc, current) => {
       current.productInfo.prices.forEach((prices) => {
-        if (prices.currency.label === currency) {
+        if (prices.currency.label === currency.name) {
           acc += prices.amount * current.amount;
           symbol = prices.currency.symbol;
         }

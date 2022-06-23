@@ -4,6 +4,8 @@ import { ReactComponent as DropdownIcon } from "../../../images/dropdown.svg";
 import { connect } from "react-redux";
 import { changeCurrency } from "../../../redux/slices/currencySlice/currencySlice";
 import { fetchCurrencies } from "../../../helpers/requests";
+import { getCurrency } from "../../../redux/selectors";
+
 const Main = styled("div")`
   margin: ${({ margin }) => margin || "0"};
 `;
@@ -63,7 +65,7 @@ class CurrentSelect extends Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.state = {
       options: [],
-      selectedOption: "$",
+      selectedOption: this.props.currency.symbol,
       isOpen: false,
     };
   }
@@ -88,11 +90,15 @@ class CurrentSelect extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   onOptionClicked = (option, symbol) => {
-    this.props.changeCurrency(option);
+    console.log(option, "option");
+    console.log(symbol, "symbol");
+    this.props.changeCurrency({ name: option, symbol });
     this.setState({ selectedOption: symbol, isOpen: false });
   };
 
   render() {
+    console.log(this.props);
+    console.log(this.state.selectedOption, "curr");
     return (
       <Main>
         <DropDownContainer>
@@ -139,4 +145,7 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(null, mapDispatchToProps)(CurrentSelect);
+const mapStateToProps = (state) => {
+  return { currency: getCurrency(state) };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentSelect);

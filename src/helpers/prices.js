@@ -1,4 +1,6 @@
 export const getPrice = (prices, currency) => {
+  console.log(currency, "curr");
+  console.log(prices, "prices");
   if (Array.isArray(prices)) {
     let result = prices.find((item) => {
       return item.currency.label === currency;
