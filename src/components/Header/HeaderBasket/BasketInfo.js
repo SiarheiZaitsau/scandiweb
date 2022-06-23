@@ -5,6 +5,8 @@ import { getBasket, getCurrency } from "../../../redux/selectors/index";
 import { ReactComponent as BasketIcon } from "../../../images/basket.svg";
 import BasketInfoDropDown from "./BasketInfoDropDown";
 import withRouter from "../../../HOCs/withRouter";
+import { calculateTax } from "../../../helpers/prices";
+
 const StyledBasketInfoContainer = styled.div`
   position: relative;
   display: flex;
@@ -86,7 +88,7 @@ class BasketInfo extends Component {
           symbol = prices.currency.symbol;
         }
       });
-      return acc;
+      return calculateTax(acc).sum;
     }, 0);
     this.setState({ basketValue: res.toFixed(2), currencySymbol: symbol });
   };

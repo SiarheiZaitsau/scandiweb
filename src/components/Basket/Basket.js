@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { getBasket, getCurrency } from "../../redux/selectors";
 import { clearBasket } from "../../redux/slices/basketSlice/basketSlice";
 import withRouter from "../../HOCs/withRouter";
+import { calculateTax } from "../../helpers/prices";
 
 class Basket extends Component {
   constructor(props) {
@@ -15,12 +16,12 @@ class Basket extends Component {
     this.state = {
       basketValue: null,
       currencySymbol: "",
+      taxValue: null,
     };
   }
   makeOrder = () => {
     this.props.clearBasket();
     this.props.navigate("/");
-    console.log(this.props.basket, "order");
   };
   componentDidMount() {
     if (this.props.basket.length < 1) {
@@ -51,16 +52,23 @@ class Basket extends Component {
       });
       return acc;
     }, 0);
-    this.setState({ basketValue: res.toFixed(2), currencySymbol: symbol });
+    this.setState({
+      basketValue: calculateTax(res).sum.toFixed(2),
+      currencySymbol: symbol,
+      taxValue: calculateTax(res).tax.toFixed(2),
+    });
   };
   render() {
     const { basket } = this.props;
-    const { basketValue, currencySymbol } = this.state;
+    const { basketValue, currencySymbol, taxValue } = this.state;
     return (
       <WidthContainer padding="80px 101px" direction="column">
         <PageTitle text="Cart" />
         <ProductList basket={basket} />
-        <BasketAttribute text="Tax 21%" value="$42.00" />
+        <BasketAttribute
+          text="Tax 21%"
+          value={`${currencySymbol}${taxValue}`}
+        />
         <BasketAttribute text="Quantity" value="3" />
         <BasketAttribute
           text="Price"

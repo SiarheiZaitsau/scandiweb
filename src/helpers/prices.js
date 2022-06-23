@@ -13,3 +13,11 @@ export const getPrice = (prices, currency) => {
     return `No such Price`;
   }
 };
+
+export const calculateTax = (sum, discountValue = 21) => {
+  console.log(sum, "sum inside");
+  return {
+    sum: sum + sum * (discountValue / 100),
+    tax: sum * (discountValue / 100),
+  };
+};
