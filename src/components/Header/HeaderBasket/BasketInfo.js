@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getBasket, getCurrency } from "../../../redux/selectors/index";
 import { ReactComponent as BasketIcon } from "../../../images/basket.svg";
 import BasketInfoDropDown from "./BasketInfoDropDown";
-
+import withRouter from "../../../HOCs/withRouter";
 const StyledBasketInfoContainer = styled.div`
   position: relative;
   display: flex;
@@ -94,10 +94,11 @@ class BasketInfo extends Component {
   render() {
     const { length } = this.props.basket;
     const { basketValue, currencySymbol } = this.state;
+    const { location } = this.props;
     return (
       <StyledBasketInfoContainer>
         <StyledBasketButton
-          disabled={length < 1}
+          disabled={length < 1 || location.pathname === "/basket"}
           onClick={() => this.toggling()}
         >
           <BasketIcon
@@ -121,4 +122,4 @@ class BasketInfo extends Component {
 const mapStateToProps = (state) => {
   return { basket: getBasket(state), currency: getCurrency(state) };
 };
-export default connect(mapStateToProps)(BasketInfo);
+export default withRouter(connect(mapStateToProps)(BasketInfo));

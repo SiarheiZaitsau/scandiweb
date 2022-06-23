@@ -4,8 +4,6 @@ const initialState = {
   currency: "USD",
 };
 
-// export const changeCurrency = createAction("CHANGE_CURRENCY");
-
 const currencySlice = createSlice({
   name: "currency",
   initialState,

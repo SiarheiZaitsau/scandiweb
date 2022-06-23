@@ -8,6 +8,7 @@ const StyledProductPrice = styled.p`
   font-weight: 500;
   line-height: 29px;
 `;
+
 class ProductPrice extends Component {
   render() {
     const { symbol, price } = getPrice(this.props.prices, this.props.currency);

@@ -68,4 +68,5 @@ export const {
   changeAttributeValue,
   clearBasket,
 } = basketSlice.actions;
+
 export default basketSlice.reducer;
