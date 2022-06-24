@@ -90,15 +90,11 @@ class CurrentSelect extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   onOptionClicked = (option, symbol) => {
-    console.log(option, "option");
-    console.log(symbol, "symbol");
     this.props.changeCurrency({ name: option, symbol });
     this.setState({ selectedOption: symbol, isOpen: false });
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.state.selectedOption, "curr");
     return (
       <Main>
         <DropDownContainer>

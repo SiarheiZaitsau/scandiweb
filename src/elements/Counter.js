@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   incrementAmount,
   decrementAmount,
-} from "../../../redux/slices/basketSlice/basketSlice";
+} from "../redux/slices/basketSlice/basketSlice";
 
 const StyledCounterContainer = styled.div.attrs((props) => ({
   isBasket: props.isBasket,
@@ -45,7 +45,7 @@ const StyledCounterValue = styled.p.attrs((props) => ({
   line-height: ${(props) => (props.isBasket ? "38.4px" : "25.6px")};
 `;
 
-class BasketProductCounter extends Component {
+class Counter extends Component {
   incrementProduct = (product) => {
     this.props.increment(product);
   };
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(null, mapDispatchToProps)(BasketProductCounter);
+export default connect(null, mapDispatchToProps)(Counter);

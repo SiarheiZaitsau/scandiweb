@@ -4,7 +4,7 @@ import ProductBrand from "./ProductBrand";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
 import ProductAttributes from "../../elements/ProductAttributes/ProductAttributes";
-import Counter from "../Header/HeaderBasket/BasketProductCounter";
+import Counter from "../../elements/Counter";
 import Flex from "../../elements/Flex";
 import ProductImagesSlider from "./ProductImagesSlider";
 

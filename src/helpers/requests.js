@@ -1,4 +1,4 @@
-const url = "http://localhost:4000/graphql";
+import { url } from "../constants/index";
 
 export const fetchCategories = async () => {
   const result = await fetch(url, {

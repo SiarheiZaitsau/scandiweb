@@ -12,7 +12,6 @@ const currencySlice = createSlice({
   initialState,
   reducers: {
     changeCurrency: (state, action) => {
-      console.log(action, "action");
       state.currency.name = action.payload.name;
       state.currency.symbol = action.payload.symbol;
     },

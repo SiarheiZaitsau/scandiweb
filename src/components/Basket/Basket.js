@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 import { getBasket, getCurrency } from "../../redux/selectors";
 import { clearBasket } from "../../redux/slices/basketSlice/basketSlice";
 import withRouter from "../../HOCs/withRouter";
-import { calculateTax } from "../../helpers/prices";
+import { calculateTax, calculateQuantity } from "../../helpers/prices";
+import { discount } from "../../constants/index";
 
 class Basket extends Component {
   constructor(props) {
@@ -66,10 +67,10 @@ class Basket extends Component {
         <PageTitle text="Cart" />
         <ProductList basket={basket} />
         <BasketAttribute
-          text="Tax 21%"
+          text={`Tax ${discount}%`}
           value={`${currencySymbol}${taxValue}`}
         />
-        <BasketAttribute text="Quantity" value="3" />
+        <BasketAttribute text="Quantity" value={calculateQuantity(basket)} />
         <BasketAttribute
           text="Price"
           value={basketValue}

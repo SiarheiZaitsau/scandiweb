@@ -4,7 +4,7 @@ import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
 import ProductAttributes from "../../../elements/ProductAttributes/ProductAttributes";
 import Flex from "../../../elements/Flex";
-import BasketProductCounter from "./BasketProductCounter";
+import Counter from "../../../elements/Counter";
 import ProductImage from "./ProductImage";
 import { connect } from "react-redux";
 import { changeAttributeValue } from "../../../redux/slices/basketSlice/basketSlice";
@@ -58,7 +58,7 @@ class ProductsList extends Component {
                     disabled={true}
                   />
                 </StyledAttributesContainer>
-                <BasketProductCounter
+                <Counter
                   product={product}
                   amount={product.amount}
                   buttonsType="small"
