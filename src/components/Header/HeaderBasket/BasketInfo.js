@@ -17,6 +17,7 @@ const StyledBasketButton = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
+  display: flex;
 `;
 const StyledBasketInfo = styled.div`
   font-family: "Roboto";

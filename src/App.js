@@ -22,7 +22,6 @@ class App extends React.Component {
       <div className="App">
         <Header categories={this.state.categories} />
         <Routes>
-          {/* <Route exact path="/" element={<Home />} /> */}
           <Route path="/" element={<Products />} />
           <Route path="/:category" element={<Products />} />
           <Route path="/products/:id" element={<Product />} />
