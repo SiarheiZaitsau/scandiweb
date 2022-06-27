@@ -40,6 +40,7 @@ class BasketInfoDropDown extends Component {
   makeOrder = () => {
     this.props.clearBasket();
     this.props.navigate("/");
+    console.log(basket, 'basket')
   };
   render() {
     const { innerRef, basket, closeBasket, price, symbol } = this.props;
