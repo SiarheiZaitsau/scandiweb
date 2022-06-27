@@ -23,7 +23,7 @@ class Basket extends Component {
   makeOrder = () => {
     this.props.clearBasket();
     this.props.navigate("/");
-    console.log(basket, 'basket')
+    console.log(this.props.basket, "basket");
   };
   componentDidMount() {
     if (this.props.basket.length < 1) {
