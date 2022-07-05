@@ -19,7 +19,7 @@ export default class Product extends Component {
     return (
       <WidthContainer padding="80px 101px">
         <ImagesList changeMainImage={this.getImage} gallery={product.gallery} />
-        <MainImage image={this.state.mainImage} />
+        <MainImage inStock={product.inStock} image={this.state.mainImage} />
         <ProductInfo product={product} />
       </WidthContainer>
     );

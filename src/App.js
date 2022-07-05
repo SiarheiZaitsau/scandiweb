@@ -3,24 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Header from "./components/Header/Header";
-import { fetchCategories } from "./helpers/requests";
 import Basket from "./pages/Basket";
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      categories: [],
-    };
-  }
-  async componentDidMount() {
-    const responseData = await fetchCategories();
-    this.setState({ categories: responseData.categories });
-  }
 
+class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header categories={this.state.categories} />
+        <Header />
         <Routes>
           <Route path="/" element={<Products />} />
           <Route path="/:category" element={<Products />} />

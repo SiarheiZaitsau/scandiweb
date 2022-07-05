@@ -26,7 +26,7 @@ class ProductAttribute extends Component {
     if (attribute.name === "Color") {
       return (
         <StyledProductAttribute type={type}>
-          <ProductAttributeText text={attribute.name} />
+          <ProductAttributeText type={type} text={attribute.name} />
           <Flex>
             {attribute.items.map((item) => {
               return (

@@ -7,8 +7,7 @@ const StyledImagesListImage = styled.img.attrs((props) => ({
 }))`
   width: 79px;
   height: 80px;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
   cursor: pointer;
 `;
 

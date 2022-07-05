@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const StyledProductStatus = styled.p`
-  font-size: 24px;
+  font-size: ${(props) => (props.type ? "36px" : "24px")};
   font-weight: 400;
   line-height: 38px;
   position: absolute;
@@ -16,6 +16,9 @@ const StyledProductStatus = styled.p`
 
 export default class ProductsList extends Component {
   render() {
-    return <StyledProductStatus>{this.props.text}</StyledProductStatus>;
+    const { type } = this.props;
+    return (
+      <StyledProductStatus type={type}>{this.props.text}</StyledProductStatus>
+    );
   }
 }

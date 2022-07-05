@@ -6,6 +6,7 @@ const StyledProductsList = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   width: 100%;
 `;
 

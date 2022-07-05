@@ -4,7 +4,6 @@ import ProductAttributes from "../../../elements/ProductAttributes/ProductAttrib
 import ProductBrand from "./ProductBrand";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
-// import ProductButton from "./ProductButton";
 import Button from "../../../elements/Button";
 import ProductDescription from "./ProductDescription";
 import ErrorText from "./ErrorText";
@@ -70,6 +69,7 @@ class ProductInfo extends Component {
           {this.state.isError && <ErrorText />}
           <ProductPrice prices={product.prices} />
           <Button
+            disabled={!product.inStock}
             margin="0 0 40px 0"
             text="ADD TO CART"
             onClick={this.submitForm}

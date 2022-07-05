@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/logo.svg";
 import BasketInfo from "./HeaderBasket/BasketInfo";
 import { SIZES } from "../../helpers/styleVariables";
-
+import { fetchCategories } from "../../helpers/requests";
 const StyledHeader = styled.header`
   display: flex;
   width: 100%;
@@ -35,11 +35,15 @@ export const StyledNavLink = styled(NavLink)`
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { categories: [] };
+  }
+  async componentDidMount() {
+    const responseData = await fetchCategories();
+    this.setState({ categories: responseData.categories });
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories } = this.state;
     return (
       <WidthContainer>
         <StyledHeader {...this.props}>

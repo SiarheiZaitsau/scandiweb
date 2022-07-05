@@ -24,12 +24,21 @@ const StyledButton = styled.button`
     background: ${(props) => (props.type ? "#1D1F22" : `#8edca2`)};
     color: #fff;
   }
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 `;
 class Button extends Component {
   render() {
-    const { text, onClick, size, margin } = this.props;
+    const { text, onClick, size, margin, disabled } = this.props;
     return (
-      <StyledButton margin={margin} size={size} onClick={onClick}>
+      <StyledButton
+        disabled={disabled}
+        margin={margin}
+        size={size}
+        onClick={onClick}
+      >
         {text}
       </StyledButton>
     );

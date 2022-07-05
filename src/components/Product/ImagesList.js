@@ -6,7 +6,12 @@ const StyledImagesList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin-right: 40px;
+  max-height: 511px;
+  min-width: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: 25px;
 `;
 const StyledImagesListItem = styled.li`
   margin-bottom: 32px;

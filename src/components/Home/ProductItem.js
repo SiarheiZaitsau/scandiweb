@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
-import ProductStatus from "./ProductStatus";
+import ProductStatus from "../../elements/ProductStatus";
 import ProductToBasket from "./ProductToBasket";
 import { NavLink } from "react-router-dom";
 import Flex from "../../elements/Flex";
@@ -15,10 +15,8 @@ const StyledProductItem = styled.li`
   padding: 16px;
   width: calc(33.33% - (40px * 2 / 3));
   margin-bottom: 120px;
-  height: 444px;
   transition: all 0.3s ease;
   opacity: ${(props) => props.inStock || "0.5"};
-  pointer-events: ${(props) => (props.inStock ? "auto" : "none")};
   transition: all 0.3s ease;
   :nth-child(3n) {
     margin-right: 0;
@@ -38,8 +36,7 @@ const StyledProductImg = styled.img`
   width: 100%;
   height: 330px;
   margin-bottom: 24px;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
   src: ${(props) => props.src};
 `;
 

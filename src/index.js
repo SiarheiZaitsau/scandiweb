@@ -12,6 +12,7 @@ const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
 });
+
 const Global = createGlobalStyle`
 * {
   margin: 0;
@@ -41,16 +42,16 @@ const theme = {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ApolloProvider client={client}>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <Global />
-            <App />
-          </ThemeProvider>
-        </Provider>
-      </ApolloProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Global />
+          <App />
+        </ThemeProvider>
+      </Provider>
+    </ApolloProvider>
+  </BrowserRouter>
+  // </React.StrictMode>
 );
